@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}{{ data.page.title }}{% endblock %}
+
+{% block beforeMain %}
+  {{ apos.singleton(data.global, 'snapHeader', 'header', {
+    controls: {
+      position: 'top-left'
+    }
+  }) }}
+{% endblock %}
+
+{% block main %}
+  <div class="productsScreen">
+    <div class="productsContainer">
+  {% for piece in data.pieces %}
+    {% set url = piece._url%}
+    <a href={{url}} class="product">
+      {{
+        apos.singleton(
+          piece,
+          'thumbnail',
+          'apostrophe-images',
+          {
+            edit: false
+          }
+        )
+      }}
+      <h1>{{ piece.title }}</h1>
+      <p>${{ piece.price }}</p>
+    </a>
+  {% endfor %}
+    </div>
+  </div>
+  {# YES, YOU NEED PAGINATION. You could set the `perPage` option to a large
+     number, but eventually you will have performance issues. However, also
+     see the discussion of "Load More" and infinite scroll solutions later in this
+     tutorial. #}
+  {% import 'apostrophe-pager:macros.html' as pager with context %}
+  {{ pager.render({ page: data.currentPage, total: data.totalPages }, data.url) }}
+{% endblock %}
+

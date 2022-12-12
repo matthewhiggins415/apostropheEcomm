@@ -1,0 +1,24 @@
+{#
+    This is an example home page template. It inherits and extends a layout template
+    that lives in the top-level views/ folder for convenience
+  #}
+
+  
+  {% extends "layout.html" %}
+
+  {% block beforeMain %}
+    {{ apos.singleton(data.global, 'snapHeader', 'header', {
+      controls: {
+        position: 'top-center'
+      }
+    }) }}
+  {% endblock %}  
+
+  {{ apos.log(apos.cart) }}
+  
+  {% block main %}
+    <div>
+      <h1>Cart Page</h1>
+    </div>
+  {% endblock %}
+  

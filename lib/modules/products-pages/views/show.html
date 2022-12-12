@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% set piece = data.piece %}
+{% set url = piece._url%}
+
+{% block beforeMain %}
+  {{ apos.singleton(data.global, 'snapHeader', 'header', {
+    controls: {
+      position: 'top-center'
+    }
+  }) }}
+{% endblock %}
+
+{% block main %}
+<div class="productScreen">
+  <div class="productScreenContainer">
+    <div class="product-image">
+      {{
+        apos.singleton(
+          piece,
+          'thumbnail',
+          'apostrophe-images',
+        {
+          edit: false
+        })
+      }}
+    </div>
+    <div class="product-info">
+      <h1 class="productH1">{{ piece.title }}</h1>
+      <h2 class="price">Price: ${{ piece.price }}</h2> 
+      {{ apos.log(piece)  }}
+      <button data-apostrophe-addToCart='{{ piece | jsonAttribute }}' class="product-button">
+        add to cart
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}

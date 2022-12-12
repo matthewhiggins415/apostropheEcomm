@@ -1,0 +1,31 @@
+{#
+  This is an example home page template. It inherits and extends a layout template
+  that lives in the top-level views/ folder for convenience
+#}
+
+{% extends "layout.html" %}
+
+{% block beforeMain %}
+  {{ apos.singleton(data.global, 'snapHeader', 'header', {
+    controls: {
+      position: 'top-center'
+    }
+  }) }}
+{% endblock %}
+
+{% block main %}
+  <div class="main-hero">
+    {{apos.area(data.global, 'hero', {
+      widgets: {
+        'hero': {}
+      }
+    })}}
+  </div>
+  <div>
+    {{ apos.area(data.global, 'featured', {
+      widgets: {
+        'featured': {}
+      }
+    })}}
+  </div>
+{% endblock %}

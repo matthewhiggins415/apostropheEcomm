@@ -1,0 +1,16 @@
+{% set w = data.widget %}
+
+<div class="c-header">
+  {% if w.primaryNav.length > 0 %}
+    <nav class="nav">
+      <h1>THE THINGS IN MY ROOM</h1>
+      <ul class="nav-list">
+        {% for navItem in w.primaryNav %}
+          {% set slug = navItem.primaryNavItem.items[0]._linkPage.slug %}
+          {% set item = navItem.primaryNavItem.items[0] %}
+          <li class="nav-link"><a href="{{ slug }}">{{ item.linkText }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endif %}
+</div>

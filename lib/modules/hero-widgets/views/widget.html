@@ -1,0 +1,17 @@
+{% set w = data.widget %}
+
+<div class="main-hero"> 
+    <div class="hero-image">
+    {{
+        apos.singleton(
+          w,
+          'image',
+          'apostrophe-images',
+          {
+            edit: true
+          }
+        )
+      }}
+    </div>
+  <p class="hero-title">{{ w.title }}</p>
+</div>
