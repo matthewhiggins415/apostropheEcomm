@@ -27,7 +27,6 @@
     <div class="product-info">
       <h1 class="productH1">{{ piece.title }}</h1>
       <h2 class="price">Price: ${{ piece.price }}</h2> 
-      {{ apos.log(piece)  }}
       <button data-apostrophe-addToCart='{{ piece | jsonAttribute }}' class="product-button">
         add to cart
       </button>

@@ -14,11 +14,35 @@
     }) }}
   {% endblock %}  
 
-  {{ apos.log(apos.cart) }}
+  {{ apos.log("cart:", data.cart) }}
+  {% set cart = data.cart %}
   
   {% block main %}
-    <div>
+    <div class="cart-page">
       <h1>Cart Page</h1>
+      <div class="cart-item-container">
+        {% for cartItem in cart %}
+        <div class="cart-item">
+          <div class="cart-image">
+            {{
+              apos.singleton(
+                cartItem,
+                'thumbnail',
+                'apostrophe-images',
+              {
+                edit: false
+              })
+            }}
+          </div>
+          <div class="cart-item-info">
+            <h2>{{ cartItem.title }}</h2>
+            <h2>${{ cartItem.price }}</h2>
+            <h2>{{ cartItem.tags }}</h2>
+          </div>
+          <button data-apostrophe-removeFromCart='{{ cartItem | jsonAttribute }}' class="cart-button">remove</button>
+        </div>
+        {% endfor %}
+      </div>
     </div>
   {% endblock %}
   

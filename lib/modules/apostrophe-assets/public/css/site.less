@@ -214,5 +214,49 @@ body {
   font-size: 20px;
 }
 
+.cart-page {
+  width: 80%;
+  margin: 0 auto;
 
+  h1 {
+    color: black;
+    margin-top: 50px;
+    font-size: 30px;
+    font-weight: 800;
+  }
+}
+
+.cart-item {
+  display: flex;
+  margin-top: 20px;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60%;
+  padding: 10px; 
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.cart-image {
+  width: 150px;
+  height: 150px;
+}
 // use imports to break up styling into separate files to be modular.
+
+.cart-item-info {
+  height: 100%;
+}
+
+.cart-button {
+  padding: 12px;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 150ms ease-in-out;
+}
+
+.cart-button:hover {
+  background-color: black;
+  color: white;
+}
